@@ -35,4 +35,15 @@ public class AddressServiceImpl implements IAddressService {
 
         return addresses;
     }
+
+    @Override
+    public AddressDto getAddress(String addressId) {
+        AddressDto dto = null;
+        AddressEntity entity = addressRepository.findByAddressId(addressId);
+        if (entity != null) {
+            dto = new ModelMapper().map(entity, AddressDto.class);
+        }
+
+        return dto;
+    }
 }

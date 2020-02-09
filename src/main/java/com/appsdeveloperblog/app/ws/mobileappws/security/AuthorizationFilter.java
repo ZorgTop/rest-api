@@ -26,22 +26,22 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
             chain.doFilter(request, response);
             return;
         }
-        UsernamePasswordAuthenticationToken authentication=getAuthentication(request);
+        UsernamePasswordAuthenticationToken authentication = getAuthentication(request);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         chain.doFilter(request, response);
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token=request.getHeader(SecurityConstants.HEADER_STRING);
-        if (token!=null){
-            token=token.replace(SecurityConstants.TOKEN_PREFIX,"");
-            String user= Jwts.parser()
+        String token = request.getHeader(SecurityConstants.HEADER_STRING);
+        if (token != null) {
+            token = token.replace(SecurityConstants.TOKEN_PREFIX, "");
+            String user = Jwts.parser()
                     .setSigningKey(SecurityConstants.getTokenSecret())
                     .parseClaimsJws(token)
                     .getBody()
                     .getSubject();
-            if (user!=null){
-                return new UsernamePasswordAuthenticationToken(user,null, new ArrayList<>());
+            if (user != null) {
+                return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
             }
             return null;
         }

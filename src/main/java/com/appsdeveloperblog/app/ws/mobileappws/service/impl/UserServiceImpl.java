@@ -35,8 +35,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public UserDto creatUser(UserDto dto) {
         if (userRepository.existsByEmail(dto.getEmail())) throw new RuntimeException("Record already exist");
-        for(int i=0;i<dto.getAddresses().size();i++)
-        {
+        for (int i = 0; i < dto.getAddresses().size(); i++) {
             AddressDto address = dto.getAddresses().get(i);
             address.setUserDetails(dto);
             address.setAddressId(utils.generateAddressId(30));
@@ -50,7 +49,7 @@ public class UserServiceImpl implements IUserService {
         userEntity.setEmailVerificationToken(utils.generateEmailVerificationToken(publishUserId));
         userEntity.setEncryptedPassword(bCryptPasswordEncoder.encode(dto.getPassword()));
         UserEntity storedDetails = userRepository.save(userEntity);
-        UserDto returnValue  = modelMapper.map(storedDetails, UserDto.class);
+        UserDto returnValue = modelMapper.map(storedDetails, UserDto.class);
         return returnValue;
     }
 

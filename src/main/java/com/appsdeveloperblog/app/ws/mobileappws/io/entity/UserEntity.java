@@ -36,13 +36,13 @@ public class UserEntity implements Serializable {
     @Column(nullable = false)
     private String encryptedPassword;
 
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String emailVerificationToken;
 
     @Column(nullable = false)
-    private Boolean emailVerificationStatus=false;
+    private Boolean emailVerificationStatus = false;
 
-    @OneToMany(cascade=CascadeType.ALL, mappedBy = "userDetails")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userDetails")
     private List<AddressEntity> addresses;
 
 

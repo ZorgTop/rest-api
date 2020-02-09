@@ -13,7 +13,7 @@ public interface IUserService extends UserDetailsService {
 
     UserDto getUserByUserId(String id);
 
-    UserDto updateUser(String userId,UserDto dto);
+    UserDto updateUser(String userId, UserDto dto);
 
     void deleteUserByUserId(String id);
 

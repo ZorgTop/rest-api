@@ -14,19 +14,17 @@ public class SampleRestForMobileApplication {
     }
 
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public SpringApplicationContext springApplicationContext()
-    {
+    public SpringApplicationContext springApplicationContext() {
         return new SpringApplicationContext();
     }
 
-    @Bean(name="AppProperties")
-    public AppProperties getAppProperties()
-    {
+    @Bean(name = "AppProperties")
+    public AppProperties getAppProperties() {
         return new AppProperties();
     }
 

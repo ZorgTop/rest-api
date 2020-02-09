@@ -31,6 +31,7 @@ public class Utils {
                 .compact();
         return token;
     }
+
     private String generateRandomString(int length) {
         StringBuilder returnValue = new StringBuilder(length);
         for (int i = 0; i < length; i++) {

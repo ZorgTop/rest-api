@@ -47,17 +47,17 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        String username=((User)authResult.getPrincipal()).getUsername();
+        String username = ((User) authResult.getPrincipal()).getUsername();
 
-        String token= Jwts.builder()
+        String token = Jwts.builder()
                 .setSubject(username)
-                .setExpiration(new Date(System.currentTimeMillis()+SecurityConstants.EXPIRATION_TIME))
-                .signWith(SignatureAlgorithm.HS512,SecurityConstants.getTokenSecret())
+                .setExpiration(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
+                .signWith(SignatureAlgorithm.HS512, SecurityConstants.getTokenSecret())
                 .compact();
-        IUserService userService= (IUserService) SpringApplicationContext.getBean("userServiceImpl");
-        UserDto userDto=userService.getUserByEmail(username);
-        response.addHeader(SecurityConstants.HEADER_STRING,SecurityConstants.TOKEN_PREFIX+token);
-        response.addHeader("UserID",userDto.getUserId());
+        IUserService userService = (IUserService) SpringApplicationContext.getBean("userServiceImpl");
+        UserDto userDto = userService.getUserByEmail(username);
+        response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
+        response.addHeader("UserID", userDto.getUserId());
 
     }
 }

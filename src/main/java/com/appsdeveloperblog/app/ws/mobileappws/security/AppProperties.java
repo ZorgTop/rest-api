@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class AppProperties {
 
     @Autowired
-    private  Environment environment;
+    private Environment environment;
 
     public String getTokenSecret() {
         return environment.getProperty("tokenSecret");
