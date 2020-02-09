@@ -4,7 +4,7 @@ import com.appsdeveloperblog.app.ws.mobileappws.io.entity.AddressEntity;
 import com.appsdeveloperblog.app.ws.mobileappws.io.entity.UserEntity;
 import com.appsdeveloperblog.app.ws.mobileappws.io.repository.AddressRepository;
 import com.appsdeveloperblog.app.ws.mobileappws.io.repository.UserRepository;
-import com.appsdeveloperblog.app.ws.mobileappws.service.AddressService;
+import com.appsdeveloperblog.app.ws.mobileappws.service.IAddressService;
 import com.appsdeveloperblog.app.ws.mobileappws.shared.dto.AddressDto;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class AddressServiceImpl implements AddressService {
+public class AddressServiceImpl implements IAddressService {
 
     private final AddressRepository addressRepository;
 

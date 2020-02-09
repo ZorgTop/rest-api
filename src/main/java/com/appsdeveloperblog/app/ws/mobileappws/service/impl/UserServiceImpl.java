@@ -4,7 +4,7 @@ import com.appsdeveloperblog.app.ws.mobileappws.Utils;
 import com.appsdeveloperblog.app.ws.mobileappws.exceptions.UserServiceException;
 import com.appsdeveloperblog.app.ws.mobileappws.io.entity.UserEntity;
 import com.appsdeveloperblog.app.ws.mobileappws.io.repository.UserRepository;
-import com.appsdeveloperblog.app.ws.mobileappws.service.UserService;
+import com.appsdeveloperblog.app.ws.mobileappws.service.IUserService;
 import com.appsdeveloperblog.app.ws.mobileappws.shared.dto.AddressDto;
 import com.appsdeveloperblog.app.ws.mobileappws.shared.dto.UserDto;
 import com.appsdeveloperblog.app.ws.mobileappws.ui.response.ErrorMessages;
@@ -24,7 +24,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements IUserService {
 
     private final UserRepository userRepository;
 

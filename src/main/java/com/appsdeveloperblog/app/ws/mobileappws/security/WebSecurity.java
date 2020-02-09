@@ -1,6 +1,6 @@
 package com.appsdeveloperblog.app.ws.mobileappws.security;
 
-import com.appsdeveloperblog.app.ws.mobileappws.service.UserService;
+import com.appsdeveloperblog.app.ws.mobileappws.service.IUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -22,7 +22,7 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 
-    private final UserService userDetailsService;
+    private final IUserService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override

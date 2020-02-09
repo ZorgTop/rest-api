@@ -2,8 +2,8 @@ package com.appsdeveloperblog.app.ws.mobileappws.ui.controller;
 
 
 import com.appsdeveloperblog.app.ws.mobileappws.exceptions.UserServiceException;
-import com.appsdeveloperblog.app.ws.mobileappws.service.AddressService;
-import com.appsdeveloperblog.app.ws.mobileappws.service.UserService;
+import com.appsdeveloperblog.app.ws.mobileappws.service.IAddressService;
+import com.appsdeveloperblog.app.ws.mobileappws.service.IUserService;
 import com.appsdeveloperblog.app.ws.mobileappws.shared.dto.AddressDto;
 import com.appsdeveloperblog.app.ws.mobileappws.shared.dto.UserDto;
 import com.appsdeveloperblog.app.ws.mobileappws.ui.model.UserDetailsRequestModel;
@@ -23,9 +23,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+    private final IUserService userService;
 
-    private final AddressService addressService;
+    private final IAddressService addressService;
 
     @GetMapping(path = "/{id}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public UserRest getUser(@PathVariable String id) {

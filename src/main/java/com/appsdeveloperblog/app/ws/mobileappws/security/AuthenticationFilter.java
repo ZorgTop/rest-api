@@ -1,7 +1,7 @@
 package com.appsdeveloperblog.app.ws.mobileappws.security;
 
 import com.appsdeveloperblog.app.ws.mobileappws.SpringApplicationContext;
-import com.appsdeveloperblog.app.ws.mobileappws.service.UserService;
+import com.appsdeveloperblog.app.ws.mobileappws.service.IUserService;
 import com.appsdeveloperblog.app.ws.mobileappws.shared.dto.UserDto;
 import com.appsdeveloperblog.app.ws.mobileappws.ui.model.UserLoginRequestModel;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -54,7 +54,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .setExpiration(new Date(System.currentTimeMillis()+SecurityConstants.EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512,SecurityConstants.getTokenSecret())
                 .compact();
-        UserService userService= (UserService) SpringApplicationContext.getBean("userServiceImpl");
+        IUserService userService= (IUserService) SpringApplicationContext.getBean("userServiceImpl");
         UserDto userDto=userService.getUserByEmail(username);
         response.addHeader(SecurityConstants.HEADER_STRING,SecurityConstants.TOKEN_PREFIX+token);
         response.addHeader("UserID",userDto.getUserId());
